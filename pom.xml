@@ -25,4 +25,22 @@
 		<module>pet-clinic-web</module>
 	</modules>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<goals>install</goals>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<scm>
+		<developerConnection>scm:git:https://github.com/dmcheremisin/pet-clinic</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 </project>
