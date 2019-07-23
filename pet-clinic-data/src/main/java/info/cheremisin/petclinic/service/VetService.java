@@ -4,11 +4,6 @@ import info.cheremisin.petclinic.model.Vet;
 
 import java.util.Set;
 
-public interface VetService {
+public interface VetService extends CrudService<Vet, Long> {
 
-    Vet findById(Long id);
-
-    Set<Vet> findAll();
-
-    Vet save(Vet owner);
 }
