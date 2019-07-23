@@ -1,11 +1,10 @@
 package info.cheremisin.petclinic.service.map;
 
 import info.cheremisin.petclinic.model.Owner;
-import info.cheremisin.petclinic.service.CrudService;
 
 import java.util.Set;
 
-public class OwnerMapService extends AbstractMapService<Owner, Long> implements CrudService<Owner, Long> {
+public class OwnerMapService extends AbstractMapService<Owner, Long> {
 
     @Override
     public Set<Owner> findAll() {
