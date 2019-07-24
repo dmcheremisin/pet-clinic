@@ -1,10 +1,11 @@
 package info.cheremisin.petclinic.service.map;
 
 import info.cheremisin.petclinic.model.Owner;
+import info.cheremisin.petclinic.service.OwnerService;
 
 import java.util.Set;
 
-public class OwnerMapService extends AbstractMapService<Owner, Long> {
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     @Override
     public Set<Owner> findAll() {
@@ -29,5 +30,14 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> {
     @Override
     public Owner findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return super.findAll().stream()
+                .filter(o -> o != null && o.getLastName() != null)
+                .filter(o -> o.getLastName().equalsIgnoreCase(lastName))
+                .findAny()
+                .orElse(null);
     }
 }

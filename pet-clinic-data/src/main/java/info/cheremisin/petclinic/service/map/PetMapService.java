@@ -1,10 +1,11 @@
 package info.cheremisin.petclinic.service.map;
 
 import info.cheremisin.petclinic.model.Pet;
+import info.cheremisin.petclinic.service.PetService;
 
 import java.util.Set;
 
-public class PetMapService extends AbstractMapService<Pet, Long> {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
