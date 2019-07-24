@@ -1,39 +1,47 @@
 package info.cheremisin.petclinic.service.map;
 
-import info.cheremisin.petclinic.service.CrudService;
+import info.cheremisin.petclinic.model.BaseEntity;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
-public abstract class AbstractMapService<T, ID> implements CrudService<T, ID> {
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long>{
 
-    protected Map<ID, T> map = new HashMap<>();
+    protected Map<Long, T> map = new HashMap<>();
 
-    @Override
     public Set<T> findAll() {
         return new HashSet(map.values());
     }
 
-    @Override
     public T findById(ID id) {
         return map.get(id);
     }
 
-    T save(ID id, T object) {
-        map.put(id, object);
+    public T save(T object) {
+        Objects.requireNonNull(object, "Object id cannot be null");
+
+        if (object.getId() == null) {
+            object.setId(getNextId());
+        }
+        map.put(object.getId(), object);
+
         return object;
     }
 
-    @Override
     public void deleteById(ID id) {
         map.remove(id);
     }
 
-    @Override
     public void delete(T object) {
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+    }
+
+    private Long getNextId() {
+        return map.isEmpty() ? 1 : Collections.max(map.keySet()) + 1;
     }
 
 }
