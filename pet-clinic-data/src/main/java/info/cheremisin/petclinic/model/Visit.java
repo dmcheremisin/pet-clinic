@@ -5,7 +5,7 @@ import java.time.LocalDate;
 /**
  * Created by Dmitrii on 28.07.2019.
  */
-public class Visit {
+public class Visit extends BaseEntity {
 
     private LocalDate date;
     private String description;
