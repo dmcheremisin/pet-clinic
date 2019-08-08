@@ -1,14 +1,7 @@
 package info.cheremisin.petclinic.bootstrap;
 
-import info.cheremisin.petclinic.model.Owner;
-import info.cheremisin.petclinic.model.Pet;
-import info.cheremisin.petclinic.model.PetType;
-import info.cheremisin.petclinic.model.Speciality;
-import info.cheremisin.petclinic.model.Vet;
-import info.cheremisin.petclinic.service.OwnerService;
-import info.cheremisin.petclinic.service.PetTypeService;
-import info.cheremisin.petclinic.service.SpecialtyService;
-import info.cheremisin.petclinic.service.VetService;
+import info.cheremisin.petclinic.model.*;
+import info.cheremisin.petclinic.service.*;
 import info.cheremisin.petclinic.service.map.OwnerMapService;
 import info.cheremisin.petclinic.service.map.VetMapService;
 import org.springframework.boot.CommandLineRunner;
@@ -23,13 +16,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
     public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-                      SpecialtyService specialtyService) {
+                      SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -97,6 +92,12 @@ public class DataLoader implements CommandLineRunner {
         owner2.getPets().add(fionasCat);
 
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setDate(LocalDate.now());
+        catVisit.setPet(fionasCat);
+        catVisit.setDescription("Fionas cat visit");
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners....");
 
