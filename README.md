@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/dmcheremisin/pet-clinic/tree/master.svg?style=svg)](https://circleci.com/gh/dmcheremisin/pet-clinic/tree/master)
+[![CircleCI](https://circleci.com/gh/dmcheremisin/pet-clinic.svg?style=svg)](https://circleci.com/gh/dmcheremisin/pet-clinic)
 
 # Spring Pet Clinic Project
 
