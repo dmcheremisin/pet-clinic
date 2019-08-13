@@ -53,7 +53,7 @@ class OwnerMapServiceTest {
         Owner owner = ownerMapService.findById(ID);
         assertNull(owner);
         Set<Owner> all = ownerMapService.findAll();
-        assertEquals(0, all.size());;
+        assertEquals(0, all.size());
     }
 
     @Test
