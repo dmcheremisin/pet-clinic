@@ -2,8 +2,6 @@ package info.cheremisin.petclinic.service.springdatajpa;
 
 import info.cheremisin.petclinic.model.Owner;
 import info.cheremisin.petclinic.repositories.OwnerRepository;
-import info.cheremisin.petclinic.repositories.PetRepository;
-import info.cheremisin.petclinic.repositories.PetTypeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -11,7 +9,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,12 +26,6 @@ class OwnerSDJpaServiceTest {
     public static final Long ID = 1L;
     @Mock
     OwnerRepository ownerRepository;
-
-    @Mock
-    PetRepository petRepository;
-
-    @Mock
-    PetTypeRepository petTypeRepository;
 
     @InjectMocks
     OwnerSDJpaService service;
