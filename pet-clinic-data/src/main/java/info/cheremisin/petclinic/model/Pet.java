@@ -3,13 +3,7 @@ package info.cheremisin.petclinic.model;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
@@ -28,10 +22,7 @@ public class Pet extends BaseEntity {
         this.petType = petType;
         this.owner = owner;
         this.birthDate = birthDate;
-
-        if (visits == null || visits.size() > 0 ) {
-            this.visits = visits;
-        }
+        this.visits = visits;
     }
 
     @Column(name = "name")
