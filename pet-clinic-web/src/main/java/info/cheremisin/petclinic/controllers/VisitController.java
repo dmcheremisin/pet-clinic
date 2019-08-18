@@ -10,13 +10,8 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.beans.PropertyEditorSupport;
-import java.time.LocalDate;
 import java.util.Map;
 
-/**
- * Created by jt on 2018-09-27.
- */
 @Controller
 public class VisitController {
 
@@ -31,13 +26,6 @@ public class VisitController {
     @InitBinder
     public void dataBinder(WebDataBinder dataBinder) {
         dataBinder.setDisallowedFields("id");
-
-        dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
-            @Override
-            public void setAsText(String text) throws IllegalArgumentException{
-                setValue(LocalDate.parse(text));
-            }
-        });
     }
 
     /**
